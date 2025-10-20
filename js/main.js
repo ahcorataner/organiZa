@@ -9,6 +9,7 @@ const i18n = {
       accounts: 'Minhas Contas',
       cards: 'Cartões',
       transactions: 'Lançamentos',
+      inteligencia: 'Inteligência Financeira', // ← adicionado aqui
       reports: 'Relatórios',
       settings: 'Configurações'
     },
@@ -28,6 +29,7 @@ const i18n = {
       accounts: 'Accounts',
       cards: 'Cards',
       transactions: 'Transactions',
+      inteligencia: 'Financial Intelligence', // ← adicionado aqui
       reports: 'Reports',
       settings: 'Settings'
     },
@@ -39,6 +41,7 @@ const i18n = {
     }
   }
 };
+
 
 // ---------- Preferências do usuário ----------
 const prefs = {
@@ -71,7 +74,8 @@ function applyPrefs() {
   greetingEl.innerText = i18n[prefs.lang].greeting.replace('{name}', prefs.name);
 
   // Menu
-  const keys = ['dashboard','accounts','cards','transactions','reports','settings'];
+  const keys = ['dashboard','accounts','cards','transactions','inteligencia','reports','settings'];
+
   document.querySelectorAll('.menu-text').forEach((el, idx) => {
     el.innerText = i18n[prefs.lang].menu[keys[idx]];
   });

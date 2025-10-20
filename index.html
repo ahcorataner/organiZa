@@ -64,6 +64,11 @@
           <i class="fa-solid fa-exchange-alt w-5"></i>
           <span class="menu-text">Lançamentos</span>
         </a>
+        <a href="#inteligencia" class="sidebar-item flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
+  <i class="fa-solid fa-brain w-5"></i>
+  <span class="menu-text">Inteligência Financeira</span>
+</a>
+
         <div class="border-t border-white/6 my-3"></div>
         <button id="recurringBtn" class="w-full text-left flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
           <i class="fa-solid fa-repeat w-5"></i>
@@ -218,6 +223,129 @@
           </table>
         </div>
       </div>
+
+      <div class="panel rounded-lg p-5 mt-10">
+
+<div id="inteligencia" class="panel rounded-lg p-5 mt-10">
+  <h3 class="text-lg font-semibold mb-4">Inteligência Financeira no Seu Controle</h3>
+
+  <!-- Recomendações de Investimento -->
+  <div class="mb-6">
+    <p class="text-sm muted mb-2">Recomendações de Investimento</p>
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="text-left text-xs muted border-b border-white/6">
+          <th class="py-3">Tipo</th>
+          <th class="py-3">Rendimento Diário (%)</th>
+          <th class="py-3">Perfil Ideal</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/6">
+        <tr>
+          <td class="py-3">Poupança</td>
+          <td class="py-3">0,02%</td>
+          <td class="py-3">Conservador</td>
+        </tr>
+        <tr>
+          <td class="py-3">CDB 130% CDI</td>
+          <td class="py-3">0,11%</td>
+          <td class="py-3">Moderado</td>
+        </tr>
+        <tr>
+          <td class="py-3">Ações PETR4</td>
+          <td class="py-3">0,35%</td>
+          <td class="py-3">Arrojado</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Previsão de Endividamento -->
+  <div class="mb-6">
+    <p class="text-sm text-red-400 font-semibold mb-2">Previsão de Endividamento</p>
+    <p class="text-sm muted mb-2">Seu saldo ficou negativo nos últimos dois meses. Considere revisar seus gastos.</p>
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="text-left text-xs muted border-b border-white/6">
+          <th class="py-3">Mês</th>
+          <th class="py-3">Receita (R$)</th>
+          <th class="py-3">Despesa (R$)</th>
+          <th class="py-3">Saldo (R$)</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/6">
+        <tr>
+          <td class="py-3">Setembro</td>
+          <td class="py-3">3.200,00</td>
+          <td class="py-3">3.550,00</td>
+          <td class="py-3 text-red-400 font-semibold">-350,00</td>
+        </tr>
+        <tr>
+          <td class="py-3">Outubro</td>
+          <td class="py-3">3.500,00</td>
+          <td class="py-3">3.620,00</td>
+          <td class="py-3 text-red-400 font-semibold">-120,00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Monitoramento Cambial e Sugestões -->
+  <div class="mb-6">
+    <p class="text-sm muted mb-2">Monitoramento Cambial e Bolsa</p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-1">
+
+      <!-- Gráfico -->
+      <div class="flex-1 chart-container">
+        <canvas id="stockChart"></canvas>
+      </div>
+
+      <!-- Sugestões de Investimento -->
+      <div class="panel rounded-lg p-4 w-full lg:w-80">
+        <h4 class="text-sm font-semibold mb-3">Sugestões de Investimento</h4>
+        <ul class="text-sm space-y-2">
+          <li><strong>Renda Fixa:</strong> Tesouro Selic, CDB 130% CDI</li>
+          <li><strong>Renda Variável:</strong> BOVA11, HGLG11, PETR4</li>
+          <li><strong>Internacional:</strong> AAPL, TSLA, AMZN</li>
+        </ul>
+        <p class="text-xs muted mt-3">Considere seu perfil de risco antes de investir.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Otimização de Pontos -->
+  <div>
+    <p class="text-sm muted mb-2">Otimização de Pontos no Cartão</p>
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="text-left text-xs muted border-b border-white/6">
+          <th class="py-3">Programa</th>
+          <th class="py-3">Pontos por R$</th>
+          <th class="py-3">Benefício Extra</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/6">
+        <tr>
+          <td class="py-3">Livelo</td>
+          <td class="py-3">1,2</td>
+          <td class="py-3">Bônus em parceiros</td>
+        </tr>
+        <tr>
+          <td class="py-3">Esfera</td>
+          <td class="py-3">1,0</td>
+          <td class="py-3">Descontos em viagens</td>
+        </tr>
+        <tr>
+          <td class="py-3">Vai de Visa</td>
+          <td class="py-3">0,8</td>
+          <td class="py-3">Cashback em compras</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
 <!-- Rodapé -->
 <footer class="panel rounded-lg p-4 text-sm flex flex-col lg:flex-row justify-between items-center gap-4 mt-10">
   <div class="muted text-center lg:text-left leading-relaxed">
@@ -261,6 +389,90 @@
 </footer>
 
 
+<!-- Script do gráfico da Bolsa -->
+<script>
+  const ctx = document.getElementById('stockChart')?.getContext('2d');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        datasets: [
+          {
+            label: 'PETR4',
+            data: [28, 30, 29, 31, 32, 33, 34],
+            borderColor: '#3b82f6',
+            fill: false
+          },
+          {
+            label: 'VALE3',
+            data: [70, 69, 68, 67, 66, 65, 64],
+            borderColor: '#10b981',
+            fill: false
+          },
+          {
+            label: 'ITUB4',
+            data: [25, 26, 27, 26, 27, 28, 29],
+            borderColor: '#f59e0b',
+            fill: false
+          },
+          {
+            label: 'AAPL',
+            data: [175, 176, 178, 177, 179, 180, 181],
+            borderColor: '#6366f1',
+            fill: false
+          },
+          {
+            label: 'TSLA',
+            data: [250, 252, 255, 258, 260, 263, 265],
+            borderColor: '#ef4444',
+            fill: false
+          },
+          {
+            label: 'AMZN',
+            data: [120, 121, 122, 123, 124, 125, 126],
+            borderColor: '#14b8a6',
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              color: getComputedStyle(document.body).getPropertyValue('--text') || '#e6eef8'
+            }
+          },
+          title: {
+            display: true,
+            text: 'Variação Simulada das Ações'
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: getComputedStyle(document.body).getPropertyValue('--muted') || '#aaa'
+            }
+          },
+          y: {
+            ticks: {
+              color: getComputedStyle(document.body).getPropertyValue('--muted') || '#aaa',
+              callback: value => '$' + value
+            }
+          }
+        }
+      }
+    });
+  }
+</script>
+
+
+<!-- Script principal -->
+<script src="js/main.js"></script>
+</body>
+</html>
 
   <script src="js/main.js"></script>
 </body>
