@@ -116,6 +116,8 @@ Organi$a/
 - ✅ **CSS:** [Validador W3C](https://jigsaw.w3.org/css-validator/check/referer)
 
 ---
+[![GitHub Project](https://img.shields.io/badge/📋%20GitHub%20Project-Organi%24a-blue?style=for-the-badge)](https://github.com/users/ahcorataner/projects/2/views/1)
+---
 
 ## 📬 Contato
 
