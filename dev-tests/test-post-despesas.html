@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste POST Despesas</title>
+</head>
+<body>
+
+  <h2>Teste de POST - Despesas</h2>
+
+  <input id="usuario_id" placeholder="Usuário ID" value="1"><br><br>
+  <input id="valor" placeholder="Valor" value="150.45"><br><br>
+  <input id="data" placeholder="Data" value="2025-02-05"><br><br>
+  <input id="categoria" placeholder="Categoria" value="Alimentação"><br><br>
+  <input id="descricao" placeholder="Descrição" value="Supermercado"><br><br>
+
+  <button onclick="enviar()">Enviar</button>
+
+  <script>
+    function enviar() {
+      console.log("Função enviar() foi chamada!");
+
+      fetch("http://localhost:3000/api/despesas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usuario_id: Number(document.getElementById("usuario_id").value),
+          valor: Number(document.getElementById("valor").value),
+          data: document.getElementById("data").value,
+          categoria: document.getElementById("categoria").value,
+          descricao: document.getElementById("descricao").value
+        })
+      })
+      .then(res => res.json())
+      .then(json => console.log("Resposta do servidor:", json))
+      .catch(err => console.error("Erro no fetch:", err));
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Teste POST /api/contas</h2>
+
+<button onclick="enviar()">Enviar Conta</button>
+
+<script>
+function enviar() {
+    fetch("http://localhost:3000/api/contas", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            nome: "Caixa",
+            banco: "Caixa Econômica",
+            tipo: "Conta Corrente",
+            saldo: 500
+        })
+    })
+    .then(r => r.json())
+    .then(console.log)
+    .catch(console.error);
+}
+</script>
+
+</body>
+</html>

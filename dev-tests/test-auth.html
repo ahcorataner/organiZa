@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste de Autenticação - ORGANI$A</title>
+</head>
+<body>
+
+  <h1>🔐 Teste de Autenticação - ORGANI$A</h1>
+
+  <h2>Registrar Usuário</h2>
+  <button onclick="registrar()">Registrar</button>
+
+  <h2>Login</h2>
+  <button onclick="login()">Login</button>
+
+  <pre id="resultado"></pre>
+
+  <script>
+    const API = 'http://localhost:3000/api/auth';
+    const resultado = document.getElementById('resultado');
+
+    async function registrar() {
+      const response = await fetch(`${API}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: 'Teste CMD',
+          email: 'renata@organisa3.com',  // Alterei o e-mail para garantir que o registro funcione
+          senha: '123456'
+        })
+      });
+
+      const data = await response.json();
+      resultado.textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function login() {
+      const response = await fetch(`${API}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: 'renata@organisa3.com',  // Alterei o e-mail para corresponder ao novo usuário
+          senha: '123456'
+        })
+      });
+
+      const data = await response.json();
+      resultado.textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+
+</body>
+</html>
