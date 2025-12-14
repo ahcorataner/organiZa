@@ -244,6 +244,63 @@ Backend (Node.js | Express)
 Banco de Dados (SQLite)
 ```
 
+## ✅ Validação de Formulários
+
+O sistema possui **validação de dados de entrada** tanto no **frontend** quanto no **backend**, garantindo a integridade das informações e prevenindo erros durante as operações.
+
+### 🔹 Validação no Frontend
+- Campos obrigatórios definidos nos formulários (ex.: descrição, valor e data)
+- Verificação de campos vazios antes do envio
+- Tipos de dados adequados (ex.: campos numéricos para valores)
+- Feedback visual ao usuário em caso de dados inválidos
+
+### 🔹 Validação no Backend
+- Verificação da presença dos campos obrigatórios nas requisições
+- Tratamento de requisições inválidas
+- Retorno de mensagens de erro apropriadas com códigos HTTP
+- Prevenção de operações inconsistentes no banco de dados
+
+Essas validações garantem maior confiabilidade ao sistema e atendem ao requisito de **validação de formulários** exigido na Entrega 2.
+
+---
+
+## 🔐 Sistema de Sessão e Controle de Acesso
+
+O sistema implementa **controle de acesso baseado em sessão**, garantindo que apenas usuários autenticados possam acessar as funcionalidades protegidas.
+
+- Após o login bem-sucedido, as informações do usuário são armazenadas no `localStorage`
+- O acesso ao dashboard é validado a cada carregamento da aplicação
+- Usuários não autenticados são automaticamente redirecionados para a tela de login
+- O logout remove os dados da sessão, encerrando o acesso às áreas protegidas
+
+Esse mecanismo assegura a proteção das rotas no frontend e atende ao requisito de **controle de acesso** da Entrega 2.
+
+---
+
+## 🔗 Integração Frontend-Backend
+
+A aplicação possui **integração funcional entre frontend e backend**, utilizando comunicação via **API REST**.
+
+- O frontend realiza requisições HTTP utilizando a **Fetch API**
+- O backend processa requisições nos métodos `GET`, `POST`, `PUT` e `DELETE`
+- As respostas são trocadas no formato **JSON**
+- O fluxo garante sincronização entre interface e persistência de dados
+
+Essa integração permite que as ações do usuário no frontend sejam refletidas corretamente no backend.
+
+---
+
+## 💾 Persistência de Dados
+
+O sistema utiliza **persistência de dados em banco de dados**, garantindo que as informações sejam mantidas mesmo após o encerramento da aplicação.
+
+- Banco de dados utilizado: **SQLite**
+- Armazenamento de receitas, despesas e informações relacionadas
+- Operações de criação, leitura, atualização e exclusão refletem diretamente no banco
+- A persistência assegura confiabilidade e integridade das informações
+
+Essa abordagem atende ao requisito de **persistência de dados** definido para a Entrega 2.
+
 ---
 
 ## 🛠 Dificuldades Encontradas e Soluções
