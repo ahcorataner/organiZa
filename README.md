@@ -175,7 +175,7 @@ npm start
 
    * 📊 Dashboard
    * 🏦 Minhas Contas
-   * 💳 Cartões
+   * 💳Cartões
    * 🔄 Lançamentos
    * 📈 Relatórios
    * ⚙️ Configurações
