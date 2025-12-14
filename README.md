@@ -136,16 +136,13 @@ ORGANI$A/
 │   ├── config/
 │   ├── controllers/
 │   ├── database/
+│   │   └── schema.sql
 │   ├── middleware/
 │   ├── models/
 │   ├── routes/
 │   ├── scripts/
 │   ├── package.json
 │   └── server.js
-│
-├── database/
-│   ├── organisa.db
-│   └── organisa.txt
 │
 ├── frontend/
 │   ├── assets/
@@ -158,6 +155,7 @@ ORGANI$A/
 ├── dev-tests/
 ├── .gitignore
 └── README.md
+
 ````
 
 ---
