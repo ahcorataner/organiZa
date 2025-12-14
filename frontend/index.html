@@ -9,7 +9,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
+
 </head>
 <body data-theme="dark">
 
@@ -130,7 +131,7 @@
         </div>
 
         <div class="panel rounded-lg p-5">
-          <p class="text-sm muted">Despesas por Tipo</p>
+          <p class="text-sm muted">Despesas</p>
           <div class="mt-2 text-2xl metric-value" id="m2-value">R$ 0,00</div>
           <div class="small muted mt-1">Resumo mensal</div>
           <div class="mt-4 chart-container"><canvas id="pieChartMain"></canvas></div>
@@ -175,6 +176,27 @@
           </div>
         </div>
       </div>
+      <!-- Gráficos Extras -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+  <!-- Despesas por Categoria -->
+  <div class="panel rounded-lg p-5">
+    <h3 class="text-lg font-semibold">Despesas por Categoria</h3>
+    <div class="small muted mb-4">Distribuição das despesas</div>
+    <div class="chart-container">
+      <canvas id="barDespesasPorCategoria"></canvas>
+    </div>
+  </div>
+
+  <!-- Evolução de Receitas e Despesas -->
+  <div class="panel rounded-lg p-5">
+    <h3 class="text-lg font-semibold">Receitas vs Despesas</h3>
+    <div class="small muted mb-4">Evolução mensal comparativa</div>
+    <div class="chart-container">
+      <canvas id="lineReceitasDespesas"></canvas>
+    </div>
+  </div>
+</div>
+
 
       <!-- Tabela de transações -->
       <div class="panel rounded-lg p-5">
@@ -498,10 +520,9 @@
 
 
 <!-- Script principal -->
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
+
 </body>
 </html>
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+

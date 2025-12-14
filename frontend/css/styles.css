@@ -1,0 +1,170 @@
+:root {
+  --bg-1: #0b1020;
+  --bg-2: #0f1724;
+  --panel: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.06);
+  --text: #e6eef8;
+  --muted: rgba(230,238,248,0.7);
+}
+
+/* Aplica cor padrão no tema escuro */
+body,
+.panel,
+.muted,
+.metric-value,
+.text-on-light {
+  color: var(--text);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+[data-theme="light"] {
+  --bg-1: #f6f8fb;
+  --bg-2: #ffffff;
+  --panel: rgba(17,24,39,0.03);
+  --glass-border: rgba(17,24,39,0.06);
+  --text: #0f1724;
+  --muted: rgba(15,23,36,0.6);
+}
+
+/* Aplica cor padrão no tema claro */
+[data-theme="light"] body,
+[data-theme="light"] .panel,
+[data-theme="light"] .muted,
+[data-theme="light"] .metric-value,
+[data-theme="light"] .text-on-light {
+  color: var(--text);
+}
+
+html, body {
+  height: 100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body {
+  background: linear-gradient(rgba(11,16,32,0.5), rgba(15,23,36,0.5));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  z-index: 0;
+}
+
+/* Imagem de fundo mais clara */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../assets/fundo.avif") center/cover no-repeat;
+  opacity: 0.65;
+}
+
+/* Painéis com contraste */
+.panel {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.45);
+}
+
+[data-theme="light"] .panel {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}
+
+.metric-value {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.sidebar-item:hover {
+  transform: translateX(6px);
+  transition: .18s ease;
+  text-shadow: 0 0 6px rgba(255,255,255,0.3);
+}
+
+.chart-container {
+  height: 240px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.spark-container {
+  height: 120px;
+}
+
+.orglogo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+@media (min-width:1024px) {
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* Estiliza o ícone nativo do calendário */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(0.7);
+  opacity: 0.7;
+}
+
+/* ============================
+   ANIMAÇÕES DOS MODAIS
+   ============================ */
+
+.modal-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .25s ease-out, transform .25s ease-out;
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity .25s ease-out, transform .25s ease-out;
+}
+
+.modal-overlay {
+  backdrop-filter: blur(4px);
+  transition: opacity .25s ease-out;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-popup {
+  animation: popup 0.18s ease-out;
+}

@@ -1,42 +1,40 @@
-const API_URL = "http://localhost:3000/api/auth";
+const loginBtn = document.getElementById("loginBtn");
 
-const btn = document.getElementById("loginBtn");
-const emailInput = document.getElementById("email");
-const senhaInput = document.getElementById("senha");
-const errorDiv = document.getElementById("error");
+if (loginBtn) {
+  loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+    const errorDiv = document.getElementById("error");
 
-btn.addEventListener("click", async () => {
-  errorDiv.textContent = "";
+    errorDiv.textContent = "";
 
-  const email = emailInput.value.trim();
-  const senha = senhaInput.value.trim();
-
-  if (!email || !senha) {
-    errorDiv.textContent = "Preencha email e senha.";
-    return;
-  }
-
-  try {
-    const res = await fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, senha })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      errorDiv.textContent = data.error || "Erro no login.";
+    if (!email || !senha) {
+      errorDiv.textContent = "Preencha email e senha.";
       return;
     }
 
-    // ✅ SALVA USUÁRIO LOGADO
-    localStorage.setItem("usuario", JSON.stringify(data));
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha })
+      });
 
-    // 🔁 REDIRECIONA PARA DASHBOARD
-    window.location.href = "index.html";
+      const data = await res.json();
 
-  } catch (err) {
-    errorDiv.textContent = "Erro ao conectar com o servidor.";
-  }
-});
+      if (!res.ok) {
+        errorDiv.textContent = data.error || "Erro ao logar";
+        return;
+      }
+
+      // 🔐 salva usuário logado no localStorage
+      localStorage.setItem("user", JSON.stringify(data));
+
+      // redireciona para o dashboard
+      window.location.href = "index.html";
+    } catch (err) {
+      errorDiv.textContent = "Servidor indisponível";
+      console.error(err);
+    }
+  });
+}
