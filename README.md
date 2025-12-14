@@ -240,14 +240,105 @@ npm start
 ---
 
 ## 🖼 Capturas de Tela
+## 🖼 Capturas de Tela do Sistema
 
-Localizadas em `frontend/prints/`:
+As imagens a seguir apresentam as principais telas do sistema **ORGANI$A**, evidenciando o funcionamento das funcionalidades implementadas na **Entrega 2 – Desenvolvimento Parcial**.
 
-* Tela de Login
-* Dashboard Principal
-* Inclusão de Receita
-* Edição de Receita
-* Tema Claro
+---
+
+### 🔐 Tela de Login
+Tela responsável pela autenticação do usuário no sistema, permitindo o acesso às funcionalidades protegidas.
+
+<p align="center">
+  <img src="prints/Login.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### 🔐 Autenticação
+Exemplo de autenticação bem-sucedida, demonstrando o retorno de dados do usuário após o login.
+
+<p align="center">
+  <img src="prints/Autenticação.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### 📊 Painel Principal (Dashboard)
+Dashboard financeiro com indicadores gerais, gráficos e visão consolidada das receitas e despesas.
+
+<p align="center">
+  <img src="prints/Tela1.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### 📈 Indicadores e Visualizações
+Tela com gráficos interativos que auxiliam na análise financeira do usuário.
+
+<p align="center">
+  <img src="prints/Tela2.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### ➕ Inclusão de Receita
+Formulário para cadastro de novas receitas, integrando frontend e backend por meio da API REST.
+
+<p align="center">
+  <img src="prints/IncluirReceita.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### ✏️ Edição de Receita
+Tela utilizada para atualização dos dados de uma receita previamente cadastrada.
+
+<p align="center">
+  <img src="prints/EditarReceita.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### 🌗 Tema Claro
+Demonstração da interface do sistema utilizando o modo de tema claro.
+
+<p align="center">
+  <img src="prints/Tema%20Claro.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+---
+
+### 📄 Telas Adicionais
+Outras telas do sistema que demonstram a navegação e organização da interface.
+
+<p align="center">
+  <img src="prints/Tela3.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
+
+<p align="center">
+  <img src="prints/Tela5.png"
+       width="350"
+       style="border:1px solid #ddd; border-radius:8px; padding:4px;">
+</p>
+
 
 ---
 
