@@ -1,13 +1,13 @@
 
 <p align="center">
-  <img src="assets/LOGO.png" alt="Organi$a Logo" width="160" style="border-radius:16px; box-shadow: 0 8px 30px rgba(0,0,0,0.6); transform: rotateX(10deg) rotateY(10deg);">
+  <img src="frontend/assets/LOGO.png" alt="Organi$a Logo" width="160" style="border-radius:16px;">
 </p>
 
-<h1 align="center" style="color:#00FFB2;">💸 ORGANI$A 💸</h1>
-<h3 align="center" style="color:#CCCCCC;">Controle Financeiro Pessoal - Protótipo Estático</h3>
+<h1 align="center">💸 ORGANI$A 💸</h1>
+<h3 align="center">Sistema Web de Controle Financeiro Pessoal</h3>
 
-<p align="center" style="color:#AAAAAA;">
-  <strong>🏛️ UFMA | 💻 Desenvolvimento de Sistemas WEB | 🎯 Primeira Nota</strong>
+<p align="center">
+  🏛️ UFMA | 💻 Desenvolvimento de Sistemas Web (DSW) | 🧩 Entrega 2 – Desenvolvimento Parcial
 </p>
 
 ---
@@ -16,7 +16,7 @@
 
 | Item | Detalhe |
 |------|---------|
-| **Nome do Sistema** | ORGANI$A - Controle Financeiro Pessoal |
+| **Nome do Sistema** | ORGANI$A – Controle Financeiro Pessoal |
 | **Curso** | Engenharia da Computação |
 | **Universidade** | Universidade Federal do Maranhão |
 | **Disciplina** | Desenvolvimento de Sistemas WEB |
@@ -25,58 +25,57 @@
 
 ---
 
-## 💡 Sobre o Protótipo
+## 📌 Descrição do Projeto
 
-ORGANI$A é um **protótipo estático,** com interface **moderna, responsiva e visualmente atraente,** desenvolvido para:
+O **ORGANI$A** é uma aplicação web desenvolvida para auxiliar usuários no **controle financeiro pessoal,** permitindo o gerenciamento de **receitas e despesas,** análise de indicadores financeiros e visualização de dados por meio de **gráficos interativos.**
 
-- 📊 Monitorar **receitas e despesas mensais**  
-- 📈 Visualizar **saldos e evolução financeira** em gráficos dinâmicos  
-- 🖥️ Consultar **resumo rápido do mês**  
-- 🔍 Filtrar transações por **datas e categorias**  
-- 🎨 Alternar entre **tema claro/escuro**  
-- 🌐 Suporte a **idioma português/inglês**  
-
-> ⚠️ Protótipo estático: ainda não implementa cálculo real de saldo, notificações ou integração com bolsas de valores.
+Nesta **Entrega 2,** o projeto evoluiu de um protótipo estático para uma **aplicação web dinâmica,** com **backend funcional,** **integração frontend-backend,** **autenticação de usuários** e **persistência de dados,** conforme definido no PRD da Entrega 1.
 
 ---
 
-## 🚀 Instruções de Navegação
+## 🚀 Funcionalidades do Sistema
 
-1. Abra **`index.html`** em qualquer navegador moderno.  
-2. Explore o menu lateral para acessar:  
-   - 📊 **Dashboard**  
-   - 🏦 **Minhas Contas**  
-   - 💳 **Cartões**  
-   - 🔄 **Lançamentos**  
-   - 📈 **Relatórios**  
-   - ⚙️ **Configurações**  
-3. Teste filtros e barra de pesquisa no Dashboard  
-4. Botões da interface estão planejados para páginas futuras  
-5. Use os seletores no topo para alternar **tema e idioma**  
+### ✅ Funcionalidades Implementadas (Entrega 2)
+- Sistema de autenticação (login e logout)
+- Controle de acesso ao dashboard
+- CRUD completo de **receitas**
+- CRUD completo de **despesas**
+- Integração frontend-backend via API REST
+- Persistência de dados com banco de dados
+- Dashboard financeiro com métricas
+- Gráficos interativos:
+  - Receitas x despesas
+  - Despesas por categoria
+  - Evolução do saldo
+- Tema **dark/light**
+- Idioma **português / inglês**
+- Navegação funcional entre telas
+
+### 🚧 Funcionalidades Não Implementadas Nesta Entrega
+- Cadastro de novos usuários
+- Alertas automáticos de endividamento
+- Integração com bolsas de valores
+- Versão mobile da aplicação
 
 ---
 
-## ⚠️ Lista de Páginas Rompidas
+## 🛠 Tecnologias Utilizadas
 
-> Todos os botões estão previstos para gerar páginas funcionais, mas ainda não possuem conteúdo completo.  
-> Por enquanto, **nenhum link está quebrado**. ✅
+### Frontend
+- HTML5 semântico  
+- CSS3  
+- Tailwind CSS  
+- JavaScript (ES6)  
+- Chart.js  
 
----
+### Backend
+- Node.js  
+- Express.js  
 
-## 🛠️ Observações Relevantes
+### Banco de Dados
+- SQLite  
 
-- Logo centralizado no topo, seguido por:  
-  **ORGANI$A**  
-  **Controle Financeiro Pessoal**  
-- Futuras funcionalidades:  
-  - 💹 Sugestões de investimento  
-  - ⚠️ Alertas de endividamento  
-  - 📈 Integração com bolsas de valores  
-- Tecnologias utilizadas:  
-  - 🟧 **HTML5 semântico**  
-  - 🟦 **CSS3 com Tailwind**  
-  - 📊 **JavaScript com Chart.js**  
-- Projeto será expandido para versão **mobile** e funcionalidades dinâmicas, com potencial **comercial** 💼  
+> Escolhido pela simplicidade de configuração e adequação ao escopo acadêmico do projeto.
 
 ---
 
@@ -88,40 +87,193 @@ ORGANI$A é um **protótipo estático,** com interface **moderna, responsiva e v
   <img src="https://img.shields.io/badge/JavaScript-0D1117?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
   <img src="https://img.shields.io/badge/TailwindCSS-0D1117?style=for-the-badge&logo=tailwind-css&logoColor=06B6D4">
   <img src="https://img.shields.io/badge/Chart.js-0D1117?style=for-the-badge&logo=chartdotjs&logoColor=FF6384">
+  <img src="https://img.shields.io/badge/Node.js-0D1117?style=for-the-badge&logo=node.js&logoColor=339933">
 </p>
 
 ---
 
-## 📂 Estrutura de Arquivos
+## 📂 Estrutura do Projeto
 
-```
-Organi$a/
+```text
+ORGANI$A/
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── database/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── scripts/
+│   ├── package.json
+│   └── server.js
 │
-├─ index.html          # Página principal
-├─ css/
-│   └─ styles.css      # Estilos personalizados
-├─ js/
-│   └─ main.js         # Scripts interativos e gráficos
-├─ assets/
-│   ├─ LOGO.png        # Logo do sistema
-│   └─ fundo.avif      # Imagem de fundo
-└─ README.md           # Este arquivo
+├── database/
+│   ├── organisa.db
+│   └── organisa.txt
+│
+├── frontend/
+│   ├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── index.html
+│   ├── login.html
+│   └── prints/
+│
+├── dev-tests/
+├── .gitignore
+└── README.md
+````
+
+---
+
+## ⚙️ Pré-requisitos
+
+* Node.js (versão 18 ou superior)
+* npm
+* Navegador web moderno
+
+---
+
+## 🔧 Instalação
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/ahcorataner/organisa.git
 ```
+
+2. Acesse a pasta do backend:
+
+```bash
+cd backend
+```
+
+3. Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Execução
+
+```bash
+npm start
+```
+
+* **Backend:** [http://localhost:3000](http://localhost:3000)
+* **Frontend:** abrir `frontend/index.html` no navegador
+
+---
+
+## 🚀 Instruções de Navegação
+
+1. Abra **index.html** em qualquer navegador moderno
+2. Realize o **login** para acessar o sistema
+3. Utilize o menu lateral para acessar:
+
+   * 📊 Dashboard
+   * 🏦 Minhas Contas
+   * 💳 Cartões
+   * 🔄 Lançamentos
+   * 📈 Relatórios
+   * ⚙️ Configurações
+4. Teste filtros e barra de pesquisa no Dashboard
+5. Utilize os seletores no topo para alternar:
+
+   * 🌙 Tema (dark / light)
+   * 🌍 Idioma (pt / en)
+
+---
+
+## ⚠️ Lista de Páginas Rompidas
+
+> Todos os botões estão previstos para gerar páginas funcionais.
+
+✔ Nenhum link está quebrado
+ℹ️ Algumas páginas ainda estão planejadas para versões futuras
+
+---
+
+## 🔗 Rotas / Endpoints da API
+
+### 🔐 Autenticação
+- **POST** `/api/auth/login`
+
+### 💰 Receitas
+- **GET** `/api/receitas`
+- **POST** `/api/receitas`
+- **PUT** `/api/receitas/:id`
+- **DELETE** `/api/receitas/:id`
+
+### 💸 Despesas
+- **GET** `/api/despesas`
+- **POST** `/api/despesas`
+- **PUT** `/api/despesas/:id`
+- **DELETE** `/api/despesas/:id`
+`/api/despesas/:id`
+
+---
+
+## 🖼 Capturas de Tela
+
+Localizadas em `frontend/prints/`:
+
+* Tela de Login
+* Dashboard Principal
+* Inclusão de Receita
+* Edição de Receita
+* Tema Claro
+
+---
+
+## 🧩 Diagrama de Arquitetura (Textual)
+
+```text
+Usuário
+  │
+  ▼
+Frontend (HTML | CSS | JavaScript | Chart.js)
+  │
+  │ Fetch API
+  ▼
+Backend (Node.js | Express)
+  │
+  ▼
+Banco de Dados (SQLite)
+```
+
+---
+
+## 🛠 Dificuldades Encontradas e Soluções
+
+* **Conflito entre rotas do frontend e backend**
+  ✔ Solução: padronização das rotas `/api/*`
+
+* **Problemas de renderização de gráficos ao alternar tema**
+  ✔ Solução: centralização da lógica de tema e gráficos
+
+* **Código duplicado no JavaScript**
+  ✔ Solução: refatoração e unificação das funções
 
 ---
 
 ## 🔗 Validações
 
-- ✅ **HTML:** [Validador W3C](https://validator.w3.org/check?uri=referer)  
-- ✅ **CSS:** [Validador W3C](https://jigsaw.w3.org/css-validator/check/referer)
+* ✅ **HTML:** [Validador W3C](https://validator.w3.org/check?uri=referer)
+* ✅ **CSS:** [Validador W3C](https://jigsaw.w3.org/css-validator/check/referer)
 
 ---
+
 [![GitHub Project](https://img.shields.io/badge/📋%20GitHub%20Project-Organi%24a-blue?style=for-the-badge)](https://github.com/users/ahcorataner/projects/2/views/1)
+
 ---
 
 ## 📬 Contato
 
-- 🧑‍💻 GitHub: [@ahcorataner](https://github.com/ahcorataner)  
-- 📧 E-mail: [renata.rocha@discente.ufma.br](mailto:renata.rocha@discente.ufma.br)  
+* 🧑‍💻 GitHub: [@ahcorataner](https://github.com/ahcorataner)
+* 📧 E-mail: [renata.rocha@discente.ufma.br](mailto:renata.rocha@discente.ufma.br)
 
 ---
+
