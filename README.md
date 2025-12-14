@@ -95,10 +95,23 @@ Nesta **Entrega 2,** o projeto evoluiu de um protótipo estático para uma **apl
 - Node.js  
 - Express.js  
 
-### Banco de Dados
-- SQLite  
+---
 
-> Escolhido pela simplicidade de configuração e adequação ao escopo acadêmico do projeto.
+## 💾 Banco de Dados
+
+O sistema utiliza o banco de dados **SQLite** para persistência das informações.
+
+O esquema do banco de dados está documentado no arquivo:
+
+```
+backend/banco de dados/esquema.sql
+
+```
+Esse arquivo descreve a estrutura das tabelas utilizadas pelo sistema, servindo como referência para a criação do banco de dados.
+
+O arquivo físico do banco de dados (`.db`) é criado automaticamente durante a execução do backend e, por se tratar de um arquivo binário gerado em tempo de execução, **não é versionado no repositório.**
+
+> SQLite: Escolhido pela simplicidade de configuração e adequação ao escopo acadêmico do projeto.
 
 ---
 
