@@ -12,16 +12,39 @@
 
 ---
 
-## 📝 Informações do Sistema
+<h2 align="center">📝 Informações do Sistema</h2>
 
-| Item | Detalhe |
-|------|---------|
-| **Nome do Sistema** | ORGANI$A – Controle Financeiro Pessoal |
-| **Curso** | Engenharia da Computação |
-| **Universidade** | Universidade Federal do Maranhão |
-| **Disciplina** | Desenvolvimento de Sistemas WEB |
-| **Aluno(a)** | Renata Costa Rocha |
-| **Matrícula** | 20240001556 |
+<table align="center">
+  <tr>
+    <th>Item</th>
+    <th>Detalhe</th>
+  </tr>
+  <tr>
+    <td><strong>Nome do Sistema</strong></td>
+    <td>ORGANI$A – Controle Financeiro Pessoal</td>
+  </tr>
+  <tr>
+    <td><strong>Curso</strong></td>
+    <td>Engenharia da Computação</td>
+  </tr>
+  <tr>
+    <td><strong>Universidade</strong></td>
+    <td>Universidade Federal do Maranhão</td>
+  </tr>
+  <tr>
+    <td><strong>Disciplina</strong></td>
+    <td>Desenvolvimento de Sistemas WEB</td>
+  </tr>
+  <tr>
+    <td><strong>Aluno(a)</strong></td>
+    <td>Renata Costa Rocha</td>
+  </tr>
+  <tr>
+    <td><strong>Matrícula</strong></td>
+    <td>20240001556</td>
+  </tr>
+</table>
+
 
 ---
 
@@ -246,7 +269,7 @@ Banco de Dados (SQLite)
 
 ## ✅ Validação de Formulários
 
-O sistema possui **validação de dados de entrada** tanto no **frontend** quanto no **backend**, garantindo a integridade das informações e prevenindo erros durante as operações.
+O sistema possui **validação de dados de entrada** tanto no **frontend** quanto no **backend,** garantindo a integridade das informações e prevenindo erros durante as operações.
 
 ### 🔹 Validação no Frontend
 - Campos obrigatórios definidos nos formulários (ex.: descrição, valor e data)
@@ -266,7 +289,7 @@ Essas validações garantem maior confiabilidade ao sistema e atendem ao requisi
 
 ## 🔐 Sistema de Sessão e Controle de Acesso
 
-O sistema implementa **controle de acesso baseado em sessão**, garantindo que apenas usuários autenticados possam acessar as funcionalidades protegidas.
+O sistema implementa **controle de acesso baseado em sessão,** garantindo que apenas usuários autenticados possam acessar as funcionalidades protegidas.
 
 - Após o login bem-sucedido, as informações do usuário são armazenadas no `localStorage`
 - O acesso ao dashboard é validado a cada carregamento da aplicação
@@ -279,7 +302,7 @@ Esse mecanismo assegura a proteção das rotas no frontend e atende ao requisito
 
 ## 🔗 Integração Frontend-Backend
 
-A aplicação possui **integração funcional entre frontend e backend**, utilizando comunicação via **API REST**.
+A aplicação possui **integração funcional entre frontend e backend,** utilizando comunicação via **API REST.**
 
 - O frontend realiza requisições HTTP utilizando a **Fetch API**
 - O backend processa requisições nos métodos `GET`, `POST`, `PUT` e `DELETE`
@@ -292,7 +315,7 @@ Essa integração permite que as ações do usuário no frontend sejam refletida
 
 ## 💾 Persistência de Dados
 
-O sistema utiliza **persistência de dados em banco de dados**, garantindo que as informações sejam mantidas mesmo após o encerramento da aplicação.
+O sistema utiliza **persistência de dados em banco de dados,** garantindo que as informações sejam mantidas mesmo após o encerramento da aplicação.
 
 - Banco de dados utilizado: **SQLite**
 - Armazenamento de receitas, despesas e informações relacionadas
