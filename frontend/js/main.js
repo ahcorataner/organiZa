@@ -940,7 +940,7 @@ async function loadExchange() {
       "https://organiza-backend-ikdh.onrender.com/api/market/exchange"
     );
 
-    if (!res.ok) throw new Error("Erro ao buscar câmbio");
+    if (!res.ok) throw new Error("Erro câmbio");
 
     const data = await res.json();
 
@@ -962,6 +962,7 @@ async function loadExchange() {
     console.error("Erro câmbio:", err);
   }
 }
+
 
 
 function renderInvestmentSuggestions({ profile, USD_BRL, EUR_BRL }) {
