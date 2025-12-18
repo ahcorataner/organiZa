@@ -2277,3 +2277,6 @@ document.getElementById("btnChangePassword")?.addEventListener("click", () => {
   openChangePasswordModal();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadExchange();
+});
