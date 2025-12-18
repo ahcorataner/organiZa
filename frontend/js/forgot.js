@@ -12,7 +12,7 @@ document.getElementById("forgotBtn").addEventListener("click", async () => {
   }
 
   try {
-    const res = await fetch("http://https://organiza-backend-ikdh.onrender.com/api/auth/forgot-password", {
+    const res = await fetch("https://organiza-backend-ikdh.onrender.com/api/auth/forgot-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

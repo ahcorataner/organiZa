@@ -1,6 +1,6 @@
 console.log("API.JS CARREGADO!");
 
-const API_URL = "http://https://organiza-backend-ikdh.onrender.com/api";
+const API_URL = "https://organiza-backend-ikdh.onrender.com/api";
 
 // =========================
 // FUNÇÃO BASE (FETCH)

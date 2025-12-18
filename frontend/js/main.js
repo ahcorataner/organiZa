@@ -12,7 +12,7 @@
 /***********************
  * CONFIG
  ***********************/
-const API_BASE = "http://https://organiza-backend-ikdh.onrender.com/api"; // backend
+const API_BASE = "https://organiza-backend-ikdh.onrender.com/api"; // backend
 const LOGIN_PAGE = "login.html";
 
 /***********************
@@ -2210,7 +2210,7 @@ function openChangePasswordModal() {
     const novaSenha = document.getElementById("novaSenha").value;
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://https://organiza-backend-ikdh.onrender.com/api/auth/change-password", {
+    const res = await fetch("https://organiza-backend-ikdh.onrender.com/api/auth/change-password", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
