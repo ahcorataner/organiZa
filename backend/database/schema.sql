@@ -9,8 +9,14 @@ CREATE TABLE IF NOT EXISTS usuarios (
   perfil_financeiro TEXT CHECK (perfil_financeiro IN ('CONSERVADOR','MODERADO','ARROJADO')),
   idioma TEXT DEFAULT 'pt',
   tema TEXT DEFAULT 'dark',
+
+  -- 🔐 Recuperação de senha
+  reset_token TEXT,
+  reset_expires INTEGER,
+
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
 -- ======================
