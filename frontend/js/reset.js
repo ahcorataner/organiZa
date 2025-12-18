@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(
-        "http://localhost:3000/api/auth/reset-password",
+        "http://https://organiza-backend-ikdh.onrender.com/api/auth/reset-password",
         {
           method: "POST",
           headers: {

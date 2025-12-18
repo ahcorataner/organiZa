@@ -25,7 +25,7 @@ document.getElementById("btnSalvar").addEventListener("click", async () => {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/change-password", {
+    const res = await fetch("http://https://organiza-backend-ikdh.onrender.com/api/auth/change-password", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
