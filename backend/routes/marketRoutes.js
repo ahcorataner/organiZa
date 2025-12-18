@@ -9,40 +9,19 @@ const marketController = require("../controllers/marketController");
 const API_KEY = process.env.ALPHA_VANTAGE_KEY;
 
 // ============================
-// 💱 CÂMBIO ATUAL (USD / EUR)
+// 💱 CÂMBIO (USD / EUR) – FALLBACK ESTÁVEL
 // ============================
 router.get("/exchange", async (req, res) => {
   try {
-    const usdRes = await axios.get("https://www.alphavantage.co/query", {
-      params: {
-        function: "CURRENCY_EXCHANGE_RATE",
-        from_currency: "USD",
-        to_currency: "BRL",
-        apikey: API_KEY
-      }
-    });
-
-    const eurRes = await axios.get("https://www.alphavantage.co/query", {
-      params: {
-        function: "CURRENCY_EXCHANGE_RATE",
-        from_currency: "EUR",
-        to_currency: "BRL",
-        apikey: API_KEY
-      }
-    });
-
-    const USD_BRL = Number(
-      usdRes.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
-    );
-
-    const EUR_BRL = Number(
-      eurRes.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
-    );
+    // 👉 valores simulados realistas (podem ser explicados)
+    const USD_BRL = 5.52;
+    const EUR_BRL = 6.48;
 
     res.json({
       USD_BRL,
       EUR_BRL,
-      date: new Date().toLocaleDateString("pt-BR")
+      date: new Date().toLocaleDateString("pt-BR"),
+      source: "fallback"
     });
 
   } catch (err) {
@@ -50,6 +29,7 @@ router.get("/exchange", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar câmbio" });
   }
 });
+
 
 // ============================
 // 📈 MERCADO DE AÇÕES (FALLBACK ESTÁVEL)
