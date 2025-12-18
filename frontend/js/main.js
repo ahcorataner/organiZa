@@ -815,17 +815,24 @@ async function renderStockChart() {
       "TSLA": "#ef4444"
     };
 
-    // Usa AAPL como referência de datas
-    const baseSymbol = Object.keys(market)[0];
-    const labels = market[baseSymbol].map(p => p.date.slice(5));
+    // market = resposta da API
+// market.stocks = array de ações
 
-    const datasets = Object.entries(market).map(([symbol, values]) => ({
-      label: symbol.replace(".SA", ""),
-      data: values.map(v => v.close),
-      borderColor: colors[symbol] || "#999",
-      tension: 0.3,
-      fill: false
-    }));
+const labels = market.stocks.map(s => s.symbol);
+
+const datasets = [
+  {
+    label: "Preço atual (R$ / USD)",
+    data: market.stocks.map(s => s.price),
+    backgroundColor: [
+      "#6366f1",
+      "#22c55e",
+      "#f59e0b",
+      "#ef4444",
+      "#06b6d4"
+    ]
+  }
+];
 
     if (stockChart) stockChart.destroy();
 
@@ -925,37 +932,42 @@ function renderExchangeChart(data) {
 
 
 // ============================
-// CÂMBIO (USD / EUR)
+// 💱 CÂMBIO (USD / EUR)
 // ============================
 async function loadExchange() {
   try {
-    const res = await fetch(`${API_BASE}/market/exchange/week`);
-    if (!res.ok) throw new Error("Erro câmbio semanal");
+    const res = await fetch(
+      "https://organiza-backend-ikdh.onrender.com/api/market/exchange"
+    );
+
+    if (!res.ok) throw new Error("Erro ao buscar câmbio");
 
     const data = await res.json();
 
-    const lastUSD = data.USD.at(-1);
-    const lastEUR = data.EUR.at(-1);
+    // Backend retorna valores únicos
+    const USD = data.USD_BRL;
+    const EUR = data.EUR_BRL;
 
-    el("usdValue").innerText = `USD/BRL: R$ ${lastUSD.value.toFixed(2)}`;
-    el("eurValue").innerText = `EUR/BRL: R$ ${lastEUR.value.toFixed(2)}`;
-    el("exchangeDate").innerText = `Atualizado em ${lastUSD.date}`;
+    el("usdValue").innerText = `USD/BRL: R$ ${USD.toFixed(2)}`;
+    el("eurValue").innerText = `EUR/BRL: R$ ${EUR.toFixed(2)}`;
+    el("exchangeDate").innerText = `Atualizado em ${data.date}`;
 
+    // Insights
     renderExchangeInsight({
-      USD_BRL: lastUSD.value
+      USD_BRL: USD
     });
-renderInvestmentSuggestions({
-  profile: "moderado", // depois pode vir do usuário
-  USD_BRL: lastUSD.value,
-  EUR_BRL: lastEUR.value
-});
 
-    renderExchangeChart(data);
+    renderInvestmentSuggestions({
+      profile: "moderado", // depois vem do usuário
+      USD_BRL: USD,
+      EUR_BRL: EUR
+    });
 
-  } catch (e) {
-    console.error("Erro câmbio:", e);
+  } catch (err) {
+    console.error("Erro câmbio:", err);
   }
 }
+
 function renderInvestmentSuggestions({ profile, USD_BRL, EUR_BRL }) {
   const box = document.getElementById("investmentSuggestions");
   if (!box) return;
