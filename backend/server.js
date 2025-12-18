@@ -10,7 +10,8 @@ const exchangeRoutes = require("./routes/exchangeRoutes");
 require('./config/db');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 
 // Middlewares globais
 app.use(cors());
@@ -50,5 +51,6 @@ app.get('/', (req, res) => {
 // START DO SERVIDOR
 // =======================
 app.listen(PORT, () => {
-  console.log(`Servidor ORGANI$A rodando em http://localhost:${PORT}`);
+  console.log(`Servidor ORGANI$A rodando na porta ${PORT}`);
 });
+
