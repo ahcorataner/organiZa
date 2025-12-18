@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registrar-se | ORGANI$A</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+    body {
+      margin: 0; height: 100vh;
+      background: url("./assets/fundo.avif") no-repeat center center fixed;
+      background-size: cover;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .container {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 40px; border-radius: 12px;
+      width: 360px; text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      color: #fff;
+    }
+    input {
+      width: 100%; padding: 12px; margin-bottom: 15px;
+      border-radius: 6px; border: none; outline: none;
+    }
+    button {
+      width: 100%; padding: 12px;
+      background: #22c55e; border: none; border-radius: 6px;
+      color: #022c22; font-weight: bold; cursor: pointer; font-size: 15px;
+    }
+    button:hover { background: #16a34a; }
+    .link { display: block; margin-top: 15px; color: #22c55e; text-decoration: none; font-size: 13px; }
+    .link:hover { text-decoration: underline; }
+    #error { color: #ffb4b4; font-size: 13px; margin-bottom: 10px; min-height: 18px; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Registrar-se</h2>
+
+    <div id="error"></div>
+
+    <!-- ✅ TEM QUE SER FORM + ID -->
+    <form id="registerForm">
+      <input type="text" id="nome" placeholder="Nome completo" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="senha" placeholder="Senha" />
+
+      <!-- ✅ TEM QUE SER submit -->
+      <button type="submit">Criar conta</button>
+    </form>
+
+    <a href="login.html" class="link">Voltar para login</a>
+  </div>
+
+  <!-- ✅ CARREGA O JS DO REGISTRO -->
+  <script src="js/register.js"></script>
+</body>
+</html>

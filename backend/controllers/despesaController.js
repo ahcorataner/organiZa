@@ -2,11 +2,13 @@
 const Despesa = require('../models/Despesa');
 
 // =========================
-// LISTAR TODAS
+// LISTAR DESPESAS DO USUÁRIO
 // =========================
 exports.listar = async (req, res) => {
   try {
-    const despesas = await Despesa.getAll();
+    const usuarioId = req.usuarioId;
+
+    const despesas = await Despesa.getAll(usuarioId);
 
     res.json(
       despesas.map(d => ({
@@ -15,34 +17,41 @@ exports.listar = async (req, res) => {
       }))
     );
   } catch (err) {
-    console.error('Erro ao listar despesas:', err);
+    console.error('❌ ERRO AO LISTAR DESPESAS:', err);
     res.status(500).json({ error: 'Erro ao listar despesas.' });
   }
 };
 
 // =========================
-// BUSCAR POR ID
+// BUSCAR DESPESA POR ID (DO USUÁRIO)
 // =========================
 exports.obterPorId = async (req, res) => {
   try {
-    const despesa = await Despesa.getById(req.params.id);
+    const usuarioId = req.usuarioId;
+    const id = req.params.id;
+
+    const despesa = await Despesa.getByIdAndUser(id, usuarioId);
 
     if (!despesa) {
       return res.status(404).json({ error: 'Despesa não encontrada.' });
     }
 
-    res.json(despesa);
+    res.json({
+      ...despesa,
+      destaque: despesa.valor >= 1000
+    });
   } catch (err) {
-    console.error('Erro ao obter despesa:', err);
+    console.error('❌ ERRO AO OBTER DESPESA:', err);
     res.status(500).json({ error: 'Erro ao obter despesa.' });
   }
 };
 
 // =========================
-// CREATE
+// CRIAR DESPESA (VINCULADA AO USUÁRIO)
 // =========================
 exports.criar = async (req, res) => {
   try {
+    const usuarioId = req.usuarioId;
     const { descricao, valor, data, categoria } = req.body;
 
     if (!valor || !data || !categoria) {
@@ -52,34 +61,31 @@ exports.criar = async (req, res) => {
     }
 
     const novaDespesa = await Despesa.create({
-      descricao,
+      usuario_id: usuarioId,
       valor,
       data,
-      categoria
+      categoria,
+      descricao
     });
 
     res.status(201).json({
       ...novaDespesa,
-      destaque: valor >= 1000
+      destaque: novaDespesa.valor >= 1000
     });
   } catch (err) {
-    console.error('Erro ao criar despesa:', err);
+    console.error('❌ ERRO AO CRIAR DESPESA:', err);
     res.status(500).json({ error: 'Erro ao criar despesa.' });
   }
 };
 
 // =========================
-// UPDATE ✅
-//=========================
+// ATUALIZAR DESPESA (SOMENTE DONO)
+// =========================
 exports.atualizar = async (req, res) => {
   try {
-    const { id } = req.params;
+    const usuarioId = req.usuarioId;
+    const id = req.params.id;
     const { descricao, valor, data, categoria } = req.body;
-
-    const existente = await Despesa.getById(id);
-    if (!existente) {
-      return res.status(404).json({ error: 'Despesa não encontrada.' });
-    }
 
     if (!valor || !data || !categoria) {
       return res.status(400).json({
@@ -87,29 +93,36 @@ exports.atualizar = async (req, res) => {
       });
     }
 
-    const despesaAtualizada = await Despesa.update(id, {
-      descricao,
+    const despesaAtualizada = await Despesa.updateByUser(id, usuarioId, {
       valor,
       data,
-      categoria
+      categoria,
+      descricao
     });
+
+    if (!despesaAtualizada) {
+      return res.status(404).json({ error: 'Despesa não encontrada.' });
+    }
 
     res.json({
       ...despesaAtualizada,
       destaque: despesaAtualizada.valor >= 1000
     });
   } catch (err) {
-    console.error('Erro ao atualizar despesa:', err);
+    console.error('❌ ERRO AO ATUALIZAR DESPESA:', err);
     res.status(500).json({ error: 'Erro ao atualizar despesa.' });
   }
 };
 
 // =========================
-// DELETE
+// REMOVER DESPESA (SOMENTE DONO)
 // =========================
 exports.remover = async (req, res) => {
   try {
-    const ok = await Despesa.remove(req.params.id);
+    const usuarioId = req.usuarioId;
+    const id = req.params.id;
+
+    const ok = await Despesa.removeByUser(id, usuarioId);
 
     if (!ok) {
       return res.status(404).json({ error: 'Despesa não encontrada.' });
@@ -117,7 +130,7 @@ exports.remover = async (req, res) => {
 
     res.status(204).send();
   } catch (err) {
-    console.error('Erro ao remover despesa:', err);
+    console.error('❌ ERRO AO REMOVER DESPESA:', err);
     res.status(500).json({ error: 'Erro ao remover despesa.' });
   }
 };

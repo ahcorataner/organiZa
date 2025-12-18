@@ -7,6 +7,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
@@ -61,25 +63,33 @@
           <i class="fa-solid fa-credit-card w-5"></i>
           <span class="menu-text">Cartões</span>
         </a>
-        <a href="#transactions" class="sidebar-item flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
-          <i class="fa-solid fa-exchange-alt w-5"></i>
-          <span class="menu-text">Lançamentos</span>
-        </a>
+        <a href="#transactions" id="btnLancamentos"
+   class="sidebar-item flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
+  <i class="fa-solid fa-exchange-alt w-5"></i>
+  <span class="menu-text">Lançamentos</span>
+</a>
+
         <a href="#inteligencia" class="sidebar-item flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
   <i class="fa-solid fa-brain w-5"></i>
   <span class="menu-text">Inteligência Financeira</span>
 </a>
 
         <div class="border-t border-white/6 my-3"></div>
-        <button id="recurringBtn" class="w-full text-left flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
-          <i class="fa-solid fa-repeat w-5"></i>
-          <span>Despesas Recorrentes</span>
-        </button>
-        <button id="extraBtn" class="w-full text-left flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
-          <i class="fa-solid fa-bolt w-5"></i>
-          <span>Despesas Extras</span>
-        </button>
-        <div class="border-t border-white/6 my-3"></div>
+
+<button id="btnDespesasRecentes"
+  class="w-full text-left flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
+  <i class="fa-solid fa-repeat w-5"></i>
+  <span>Despesas Recentes</span>
+</button>
+
+<button id="btnReceitasRecentes"
+  class="w-full text-left flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
+  <i class="fa-solid fa-sack-dollar w-5"></i>
+  <span>Receitas Recentes</span>
+</button>
+
+<div class="border-t border-white/6 my-3"></div>
+
         <a href="#reports" class="sidebar-item flex items-center gap-3 p-3 rounded-md hover:bg-white/5">
           <i class="fa-solid fa-chart-pie w-5"></i>
           <span class="menu-text">Relatórios</span>
@@ -88,6 +98,15 @@
           <i class="fa-solid fa-gear w-5"></i>
           <span class="menu-text">Configurações</span>
         </a>
+        <button
+  id="btnChangePassword"
+  class="sidebar-item flex items-center gap-3 p-3 rounded-md hover:bg-white/5 w-full text-left"
+>
+  <i class="fa-solid fa-key w-5"></i>
+  <span class="menu-text">Trocar Senha</span>
+</button>
+
+
         <div class="mt-6 flex flex-col gap-3">
           <button id="addIncomeBtn" class="px-4 py-2 rounded-md bg-green-600 hover:bg-green-700 text-white text-sm font-semibold inline-flex items-center gap-2">
             <i class="fa-solid fa-plus"></i>
@@ -104,6 +123,8 @@
     <!-- Main -->
     <main class="flex-1 space-y-6">
       <!-- Filtros -->
+       <!-- TOPO DO DASHBOARD -->
+        <div id="dashboardTop"></div>
       <div class="panel rounded-lg p-4 flex flex-col lg:flex-row gap-4 items-center">
         <div class="flex gap-3 items-center w-full lg:w-auto">
           <label class="text-sm muted" id="labelFrom">De:</label>
@@ -121,29 +142,69 @@
         </div>
       </div>
 
-      <!-- Métricas e Gráficos -->
-      <section class="metric-grid gap-4" aria-label="Métricas financeiras">
-        <div class="panel rounded-lg p-5">
-          <p class="text-sm muted" id="m1-title">Receitas</p>
-          <div class="mt-2 text-2xl metric-value" id="m1-value">R$ 0,00</div>
-          <div class="small muted mt-1" id="m1-sub">Melhor mês: —</div>
-          <div class="mt-4 spark-container"><canvas id="spark1"></canvas></div>
-        </div>
 
-        <div class="panel rounded-lg p-5">
-          <p class="text-sm muted">Despesas</p>
-          <div class="mt-2 text-2xl metric-value" id="m2-value">R$ 0,00</div>
-          <div class="small muted mt-1">Resumo mensal</div>
-          <div class="mt-4 chart-container"><canvas id="pieChartMain"></canvas></div>
-        </div>
 
-        <div class="panel rounded-lg p-5">
-          <p class="text-sm muted">Despesas x Receitas</p>
-          <div class="mt-2 text-2xl metric-value" id="m3-value">Saldo: R$ 0,00</div>
-          <div class="small muted mt-1">Visão mensal comparativa</div>
-          <div class="mt-4 chart-container"><canvas id="barCompare"></canvas></div>
-        </div>
-      </section>
+
+<!-- MÉTRICAS PRINCIPAIS -->
+<section
+  class="grid grid-cols-1 md:grid-cols-3 gap-6"
+  aria-label="Métricas financeiras"
+>
+
+  <!-- RECEITAS -->
+  <div class="panel rounded-lg p-5">
+    <p class="text-sm muted">Receitas</p>
+
+    <div class="mt-2 text-2xl metric-value" id="m1-value">
+      R$ 0,00
+    </div>
+
+    <div class="small muted mt-1">
+      Melhor mês: <span id="bestMonth">—</span>
+    </div>
+
+    <div class="mt-4 h-24">
+      <canvas id="spark1"></canvas>
+    </div>
+  </div>
+
+  <!-- DESPESAS -->
+  <div class="panel rounded-lg p-5">
+    <p class="text-sm muted">Despesas</p>
+
+    <div class="mt-2 text-2xl metric-value" id="m2-value">
+      R$ 0,00
+    </div>
+
+    <div class="small muted mt-1">
+      Resumo mensal
+    </div>
+
+    <div class="mt-4 h-[220px]">
+      <canvas id="pieChartMain"></canvas>
+    </div>
+  </div>
+
+  <!-- DESPESAS x RECEITAS -->
+  <div class="panel rounded-lg p-5">
+    <p class="text-sm muted">Despesas x Receitas</p>
+
+    <div class="mt-2 text-2xl metric-value" id="m3-value">
+      Saldo: R$ 0,00
+    </div>
+
+    <div class="small muted mt-1">
+      Visão mensal comparativa
+    </div>
+
+    <div class="mt-4 h-[220px]">
+      <canvas id="barCompare"></canvas>
+    </div>
+  </div>
+
+</section>
+
+
 
       <!-- Evolução + Resumo -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -176,6 +237,7 @@
           </div>
         </div>
       </div>
+      
       <!-- Gráficos Extras -->
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
   <!-- Despesas por Categoria -->
@@ -201,7 +263,7 @@
       <!-- Tabela de transações -->
       <div class="panel rounded-lg p-5">
         <div class="flex justify-between items-center mb-4">
-          <h3 class="text-lg font-semibold" id="recent-title">Despesas Recentes</h3>
+          <h3 class="text-lg font-semibold" id="recent-title">Lançamentos</h3>
           <div class="small muted">Últimas transações</div>
         </div>
         <div class="overflow-x-auto">
@@ -246,126 +308,67 @@
         </div>
       </div>
 
-      <div class="panel rounded-lg p-5 mt-10">
 
-<div id="inteligencia" class="panel rounded-lg p-5 mt-10">
-  <h3 class="text-lg font-semibold mb-4">Inteligência Financeira no Seu Controle</h3>
+<!-- ===============================
+     INTELIGÊNCIA FINANCEIRA
+=============================== -->
+<section id="inteligencia" class="panel rounded-lg p-6 mt-10 space-y-6">
+  <h3 class="text-lg font-semibold">
+    Inteligência Financeira no Seu Controle
+  </h3>
 
-  <!-- Recomendações de Investimento -->
-  <div class="mb-6">
-    <p class="text-sm muted mb-2">Recomendações de Investimento</p>
-    <table class="w-full text-sm">
-      <thead>
-        <tr class="text-left text-xs muted border-b border-white/6">
-          <th class="py-3">Tipo</th>
-          <th class="py-3">Rendimento Diário (%)</th>
-          <th class="py-3">Perfil Ideal</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-white/6">
-        <tr>
-          <td class="py-3">Poupança</td>
-          <td class="py-3">0,02%</td>
-          <td class="py-3">Conservador</td>
-        </tr>
-        <tr>
-          <td class="py-3">CDB 130% CDI</td>
-          <td class="py-3">0,11%</td>
-          <td class="py-3">Moderado</td>
-        </tr>
-        <tr>
-          <td class="py-3">Ações PETR4</td>
-          <td class="py-3">0,35%</td>
-          <td class="py-3">Arrojado</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- 🔎 Insight -->
+  <div
+    id="exchangeInsight"
+    class="p-4 rounded-md bg-gradient-to-r from-indigo-500/20 to-fuchsia-500/20
+           text-sm text-indigo-300 font-medium"
+  >
+    🔎 Analisando cenário financeiro...
   </div>
 
-  <!-- Previsão de Endividamento -->
-  <div class="mb-6">
-    <p class="text-sm text-red-400 font-semibold mb-2">Previsão de Endividamento</p>
-    <p class="text-sm muted mb-2">Seu saldo ficou negativo nos últimos dois meses. Considere revisar seus gastos.</p>
-    <table class="w-full text-sm">
-      <thead>
-        <tr class="text-left text-xs muted border-b border-white/6">
-          <th class="py-3">Mês</th>
-          <th class="py-3">Receita (R$)</th>
-          <th class="py-3">Despesa (R$)</th>
-          <th class="py-3">Saldo (R$)</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-white/6">
-        <tr>
-          <td class="py-3">Setembro</td>
-          <td class="py-3">3.200,00</td>
-          <td class="py-3">3.550,00</td>
-          <td class="py-3 text-red-400 font-semibold">-350,00</td>
-        </tr>
-        <tr>
-          <td class="py-3">Outubro</td>
-          <td class="py-3">3.500,00</td>
-          <td class="py-3">3.620,00</td>
-          <td class="py-3 text-red-400 font-semibold">-120,00</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<!-- GRID: CÂMBIO + MERCADO -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-  <!-- Monitoramento Cambial e Sugestões -->
-  <div class="mb-6">
-    <p class="text-sm muted mb-2">Monitoramento Cambial e Bolsa</p>
-    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-1">
+  <!-- 📈 CÂMBIO -->
+  <div class="panel rounded-lg p-4">
+    <p class="text-sm font-semibold mb-2">Câmbio (USD / EUR)</p>
 
-      <!-- Gráfico -->
-      <div class="flex-1 chart-container">
-        <canvas id="stockChart"></canvas>
-      </div>
+    <div class="flex justify-between text-sm mb-2">
+      <span id="usdValue">USD/BRL: —</span>
+      <span id="eurValue">EUR/BRL: —</span>
+    </div>
 
-      <!-- Sugestões de Investimento -->
-      <div class="panel rounded-lg p-4 w-full lg:w-80">
-        <h4 class="text-sm font-semibold mb-3">Sugestões de Investimento</h4>
-        <ul class="text-sm space-y-2">
-          <li><strong>Renda Fixa:</strong> Tesouro Selic, CDB 130% CDI</li>
-          <li><strong>Renda Variável:</strong> BOVA11, HGLG11, PETR4</li>
-          <li><strong>Internacional:</strong> AAPL, TSLA, AMZN</li>
-        </ul>
-        <p class="text-xs muted mt-3">Considere seu perfil de risco antes de investir.</p>
-      </div>
+    <div class="text-xs muted mb-3" id="exchangeDate">
+      Atualizado em —
+    </div>
+
+    <div class="chart-container h-[180px]">
+      <canvas id="exchangeChart"></canvas>
     </div>
   </div>
 
-  <!-- Otimização de Pontos -->
-  <div>
-    <p class="text-sm muted mb-2">Otimização de Pontos no Cartão</p>
-    <table class="w-full text-sm">
-      <thead>
-        <tr class="text-left text-xs muted border-b border-white/6">
-          <th class="py-3">Programa</th>
-          <th class="py-3">Pontos por R$</th>
-          <th class="py-3">Benefício Extra</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-white/6">
-        <tr>
-          <td class="py-3">Livelo</td>
-          <td class="py-3">1,2</td>
-          <td class="py-3">Bônus em parceiros</td>
-        </tr>
-        <tr>
-          <td class="py-3">Esfera</td>
-          <td class="py-3">1,0</td>
-          <td class="py-3">Descontos em viagens</td>
-        </tr>
-        <tr>
-          <td class="py-3">Vai de Visa</td>
-          <td class="py-3">0,8</td>
-          <td class="py-3">Cashback em compras</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- 📊 MERCADO FINANCEIRO -->
+  <div class="panel rounded-lg p-4">
+    <p class="text-sm font-semibold mb-2">
+      Mercado Financeiro — Ações de Referência
+    </p>
+
+    <div class="chart-container h-[220px]">
+      <canvas id="stockChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- 💡 SUGESTÕES (ABAIXO DOS GRÁFICOS) -->
+<div class="panel rounded-lg p-4 mt-6">
+  <p class="text-sm font-semibold mb-3">Sugestões de Investimento</p>
+
+  <div id="investmentSuggestions" class="text-sm space-y-2">
+    🔄 Analisando perfil e cenário econômico...
   </div>
 </div>
+
 
 <!-- Histórias de Usuários -->
 <div class="mt-10 mb-6">
@@ -439,85 +442,53 @@
 </footer>
 
 
-<!-- Script do gráfico da Bolsa -->
-<script>
-  const ctx = document.getElementById('stockChart')?.getContext('2d');
-  if (ctx) {
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-        datasets: [
-          {
-            label: 'PETR4',
-            data: [28, 30, 29, 31, 32, 33, 34],
-            borderColor: '#3b82f6',
-            fill: false
-          },
-          {
-            label: 'VALE3',
-            data: [70, 69, 68, 67, 66, 65, 64],
-            borderColor: '#10b981',
-            fill: false
-          },
-          {
-            label: 'ITUB4',
-            data: [25, 26, 27, 26, 27, 28, 29],
-            borderColor: '#f59e0b',
-            fill: false
-          },
-          {
-            label: 'AAPL',
-            data: [175, 176, 178, 177, 179, 180, 181],
-            borderColor: '#6366f1',
-            fill: false
-          },
-          {
-            label: 'TSLA',
-            data: [250, 252, 255, 258, 260, 263, 265],
-            borderColor: '#ef4444',
-            fill: false
-          },
-          {
-            label: 'AMZN',
-            data: [120, 121, 122, 123, 124, 125, 126],
-            borderColor: '#14b8a6',
-            fill: false
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: {
-              color: getComputedStyle(document.body).getPropertyValue('--text') || '#e6eef8'
-            }
-          },
-          title: {
-            display: true,
-            text: 'Variação Simulada das Ações'
-          }
-        },
-        scales: {
-          x: {
-            ticks: {
-              color: getComputedStyle(document.body).getPropertyValue('--muted') || '#aaa'
-            }
-          },
-          y: {
-            ticks: {
-              color: getComputedStyle(document.body).getPropertyValue('--muted') || '#aaa',
-              callback: value => '$' + value
-            }
-          }
-        }
-      }
-    });
-  }
-</script>
+<!-- MODAL: LANÇAMENTOS -->
+<div
+  id="modalLancamentos"
+  class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden
+         items-center justify-center z-50"
+>
 
+  <div class="panel rounded-lg p-6 w-full max-w-5xl relative">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-semibold">
+        📊 Lançamentos
+      </h3>
+
+      <button
+        id="closeLancamentos"
+        class="text-xl hover:opacity-70"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Tabela -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-left text-xs muted border-b border-white/6">
+            <th class="py-3">Data</th>
+            <th class="py-3">Tipo</th>
+            <th class="py-3">Categoria</th>
+            <th class="py-3">Descrição</th>
+            <th class="py-3">Valor</th>
+          </tr>
+        </thead>
+
+        <tbody
+          id="tabelaLancamentos"
+          class="divide-y divide-white/6"
+        >
+          <!-- preenchido via JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
 
 <!-- Script principal -->
 <script type="module" src="js/main.js"></script>

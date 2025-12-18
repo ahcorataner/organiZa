@@ -1,7 +1,11 @@
-// backend/routes/despesaRoutes.js
 const express = require('express');
 const router = express.Router();
+
 const despesaController = require('../controllers/despesaController');
+const authMiddleware = require('../middleware/authMiddleware'); // 👈 AQUI
+
+// 🔐 PROTEGE TODAS AS ROTAS
+router.use(authMiddleware);
 
 // /api/despesas
 router.get('/', despesaController.listar);

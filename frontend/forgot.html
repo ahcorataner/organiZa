@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Senha | ORGANI$A</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url("./assets/fundo.avif") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 40px;
+      border-radius: 12px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      color: #fff;
+    }
+
+    .container img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #cbd5f5;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #3b82f6;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    .back {
+      margin-top: 15px;
+      background: transparent;
+      border: none;
+      color: #38bdf8;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: #f87171;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .success {
+      color: #22c55e;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="./assets/LOGO.png" alt="ORGANI$A">
+
+    <h2>Recuperar Senha</h2>
+    <p>Informe seu email para receber as instruções de recuperação.</p>
+
+    <!-- MENSAGEM -->
+    <div id="msg"></div>
+
+    <!-- EMAIL -->
+    <input
+      type="email"
+      id="email"
+      placeholder="Seu email"
+      required
+    >
+
+    <!-- BOTÃO PRINCIPAL -->
+    <button id="forgotBtn">
+      Recuperar senha
+    </button>
+
+    <!-- VOLTAR -->
+    <button
+      class="back"
+      onclick="window.location.href='login.html'"
+    >
+      Voltar para o login
+    </button>
+  </div>
+
+  <!-- JS -->
+  <script src="js/forgot.js"></script>
+
+</body>
+</html>

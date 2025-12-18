@@ -2,11 +2,13 @@
 const Receita = require('../models/Receita');
 
 // =============================
-// LISTAR TODAS AS RECEITAS
+// LISTAR RECEITAS DO USUÁRIO
 // =============================
 exports.listar = async (req, res) => {
   try {
-    const receitas = await Receita.getAll();
+    const usuarioId = req.usuarioId;
+
+    const receitas = await Receita.getAll(usuarioId);
     res.json(receitas);
   } catch (err) {
     console.error('❌ ERRO AO LISTAR RECEITAS:', err);
@@ -15,11 +17,14 @@ exports.listar = async (req, res) => {
 };
 
 // =============================
-// OBTER RECEITA POR ID
+// OBTER RECEITA POR ID (DO USUÁRIO)
 // =============================
 exports.obterPorId = async (req, res) => {
   try {
-    const receita = await Receita.getById(req.params.id);
+    const usuarioId = req.usuarioId;
+    const id = req.params.id;
+
+    const receita = await Receita.getByIdAndUser(id, usuarioId);
 
     if (!receita) {
       return res.status(404).json({ error: 'Receita não encontrada.' });
@@ -33,13 +38,13 @@ exports.obterPorId = async (req, res) => {
 };
 
 // =============================
-// CRIAR RECEITA
+// CRIAR RECEITA (VINCULA USUÁRIO)
 // =============================
 exports.criar = async (req, res) => {
   try {
+    const usuarioId = req.usuarioId;
     const { descricao, valor, data, categoria } = req.body;
 
-    // 🔎 VALIDAÇÃO
     if (!descricao || !valor || !data || !categoria) {
       return res.status(400).json({
         error: 'Campos obrigatórios: descricao, valor, data, categoria.'
@@ -47,6 +52,7 @@ exports.criar = async (req, res) => {
     }
 
     const nova = await Receita.create({
+      usuario_id: usuarioId,
       descricao,
       valor,
       data,
@@ -61,32 +67,30 @@ exports.criar = async (req, res) => {
 };
 
 // =============================
-// ATUALIZAR RECEITA  ✅
+// ATUALIZAR RECEITA (SOMENTE DONO)
 // =============================
 exports.atualizar = async (req, res) => {
   try {
+    const usuarioId = req.usuarioId;
     const id = req.params.id;
-    const existente = await Receita.getById(id);
-
-    if (!existente) {
-      return res.status(404).json({ error: 'Receita não encontrada.' });
-    }
-
     const { descricao, valor, data, categoria } = req.body;
 
-    // 🔎 VALIDAÇÃO
     if (!descricao || !valor || !data || !categoria) {
       return res.status(400).json({
         error: 'Campos obrigatórios: descricao, valor, data, categoria.'
       });
     }
 
-    const atualizada = await Receita.update(id, {
+    const atualizada = await Receita.updateByUser(id, usuarioId, {
       descricao,
       valor,
       data,
       categoria
     });
+
+    if (!atualizada) {
+      return res.status(404).json({ error: 'Receita não encontrada.' });
+    }
 
     res.json(atualizada);
   } catch (err) {
@@ -96,11 +100,14 @@ exports.atualizar = async (req, res) => {
 };
 
 // =============================
-// REMOVER RECEITA
+// REMOVER RECEITA (SOMENTE DONO)
 // =============================
 exports.remover = async (req, res) => {
   try {
-    const ok = await Receita.remove(req.params.id);
+    const usuarioId = req.usuarioId;
+    const id = req.params.id;
+
+    const ok = await Receita.removeByUser(id, usuarioId);
 
     if (!ok) {
       return res.status(404).json({ error: 'Receita não encontrada.' });

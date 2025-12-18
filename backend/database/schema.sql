@@ -12,9 +12,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Usuário padrão para teste
-INSERT OR IGNORE INTO usuarios (id, nome, email, senha, perfil_financeiro)
-VALUES (1, 'Renata', 'renata@organisa.com', '123456', 'MODERADO');
 
 -- ======================
 -- Receitas

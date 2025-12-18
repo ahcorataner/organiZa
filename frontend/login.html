@@ -48,7 +48,7 @@
       outline: none;
     }
 
-    .login-container button {
+    .btn-main {
       width: 100%;
       padding: 12px;
       background: #22c55e;
@@ -60,13 +60,51 @@
       font-size: 15px;
     }
 
-    .login-container button:hover {
+    .btn-main:hover {
       background: #16a34a;
+    }
+
+    .login-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 12px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #e5e7eb;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-secondary:hover {
+      background: #334155;
+    }
+
+    .btn-link {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: 1px solid #22c55e;
+      border-radius: 6px;
+      color: #22c55e;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .btn-link:hover {
+      background: rgba(34, 197, 94, 0.15);
     }
 
     .error {
       color: #f87171;
-      margin-top: 10px;
+      margin-top: 14px;
       font-size: 14px;
     }
   </style>
@@ -79,11 +117,30 @@
 
     <h2>Login</h2>
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="senha" placeholder="Senha">
+    <form id="loginForm" class="login-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="senha" placeholder="Senha" required>
 
-    <button id="loginBtn">Entrar</button>
+      <button type="submit" class="btn-main">Entrar</button>
 
+      <div class="login-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="window.location.href='register.html'">
+          Registrar-se
+        </button>
+
+        <button
+          type="button"
+          class="btn-link"
+          onclick="window.location.href='forgot.html'">
+          Esqueci minha senha
+        </button>
+      </div>
+    </form>
+
+    <!-- ✅ ESTE ERA O ELEMENTO QUE FALTAVA -->
     <div id="error" class="error"></div>
   </div>
 

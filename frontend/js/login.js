@@ -1,10 +1,21 @@
-const loginBtn = document.getElementById("loginBtn");
+/****************************************************
+ * ORGANI$A - login.js
+ * - Login com API
+ * - Salva token e usuário no localStorage
+ * - Redireciona para dashboard
+ ****************************************************/
 
-if (loginBtn) {
-  loginBtn.addEventListener("click", async () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("loginForm");
+  const errorDiv = document.getElementById("error");
+
+  if (!loginForm) return;
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault(); // impede reload da página
+
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value.trim();
-    const errorDiv = document.getElementById("error");
 
     errorDiv.textContent = "";
 
@@ -16,7 +27,9 @@ if (loginBtn) {
     try {
       const res = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({ email, senha })
       });
 
@@ -27,14 +40,28 @@ if (loginBtn) {
         return;
       }
 
-      // 🔐 salva usuário logado no localStorage
-      localStorage.setItem("user", JSON.stringify(data));
+      // 🔐 salva token e usuário separadamente
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("usuario", JSON.stringify(data.usuario));
 
-      // redireciona para o dashboard
-      window.location.href = "index.html";
+      console.log("Login OK:", data.usuario);
+
+      // ✅ redirecionamento seguro para o dashboard
+      setTimeout(() => {
+  window.location.href = "index.html";
+}, 100);
+
+
     } catch (err) {
       errorDiv.textContent = "Servidor indisponível";
       console.error(err);
     }
   });
-}
+});
+document.getElementById("registerBtn")?.addEventListener("click", () => {
+  window.location.href = "register.html";
+});
+
+document.getElementById("forgotBtn")?.addEventListener("click", () => {
+  window.location.href = "forgot.html";
+});
