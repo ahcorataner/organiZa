@@ -944,29 +944,25 @@ async function loadExchange() {
 
     const data = await res.json();
 
-    // Backend retorna valores únicos
-    const USD = data.USD_BRL;
-    const EUR = data.EUR_BRL;
-
-    el("usdValue").innerText = `USD/BRL: R$ ${USD.toFixed(2)}`;
-    el("eurValue").innerText = `EUR/BRL: R$ ${EUR.toFixed(2)}`;
+    el("usdValue").innerText = `USD/BRL: R$ ${data.USD_BRL.toFixed(2)}`;
+    el("eurValue").innerText = `EUR/BRL: R$ ${data.EUR_BRL.toFixed(2)}`;
     el("exchangeDate").innerText = `Atualizado em ${data.date}`;
 
-    // Insights
     renderExchangeInsight({
-      USD_BRL: USD
+      USD_BRL: data.USD_BRL
     });
 
     renderInvestmentSuggestions({
-      profile: "moderado", // depois vem do usuário
-      USD_BRL: USD,
-      EUR_BRL: EUR
+      profile: "moderado",
+      USD_BRL: data.USD_BRL,
+      EUR_BRL: data.EUR_BRL
     });
 
   } catch (err) {
     console.error("Erro câmbio:", err);
   }
 }
+
 
 function renderInvestmentSuggestions({ profile, USD_BRL, EUR_BRL }) {
   const box = document.getElementById("investmentSuggestions");
