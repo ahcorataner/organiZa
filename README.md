@@ -50,51 +50,68 @@
 
 ## 📌 Descrição do Projeto
 
-O **ORGANI$A** é uma aplicação web desenvolvida para auxiliar usuários no **controle financeiro pessoal,** permitindo o gerenciamento de **receitas e despesas,** análise de indicadores financeiros e visualização de dados por meio de **gráficos interativos.**
+O **ORGANI$A** é uma aplicação web desenvolvida para **controle financeiro pessoal**, permitindo ao usuário gerenciar **receitas, despesas, contas financeiras**, acompanhar **indicadores visuais**, gráficos interativos e receber **insights financeiros**.
 
-Nesta **Entrega 2,** o projeto evoluiu de um protótipo estático para uma **aplicação web dinâmica,** com **backend funcional,** **integração frontend-backend,** **autenticação de usuários** e **persistência de dados,** conforme definido no PRD da Entrega 1.
+A motivação do projeto surgiu a partir de uma necessidade real: a utilização recorrente de planilhas (Excel) para controle financeiro, que se mostravam pouco práticas para inserção e análise diária de dados. Assim, o ORGANI$A foi idealizado como uma solução mais intuitiva, visual e acessível. 
 
+Na **Entrega 3**, o sistema apresenta-se como uma **aplicação web completa**, com backend funcional, autenticação segura, persistência em banco de dados, integração total frontend-backend, deploy em produção e documentação detalhada, conforme definido no PRD da Entrega 1.
 ---
 
 ## 🚀 Funcionalidades do Sistema
 
-### ✅ Funcionalidades Implementadas (Entrega 2)
-- Sistema de autenticação (login e logout)
-- Controle de acesso ao dashboard
-- CRUD completo de **receitas**
-- CRUD completo de **despesas**
-- Integração frontend-backend via API REST
-- Persistência de dados com banco de dados
-- Dashboard financeiro com métricas
-- Gráficos interativos:
-  - Receitas x despesas
+### ✅ Funcionalidades Implementadas
+
+- Sistema completo de autenticação e autorização:
+  - Registro de usuário
+  - Login e logout
+  - Recuperação de senha por e-mail
+- Controle de sessão no frontend
+- CRUD completo de:
+  - Receitas
+  - Despesas
+  - Contas financeiras
+- Dashboard financeiro interativo
+- Gráficos dinâmicos:
+  - Receitas x Despesas
   - Despesas por categoria
   - Evolução do saldo
-- Tema **dark/light**
-- Idioma **português / inglês**
-- Navegação funcional entre telas
+- Inteligência Financeira:
+  - Visualização de câmbio (USD / EUR)
+  - Mercado financeiro (ações de referência – fallback estável)
+  - Sugestões financeiras baseadas em cenário econômico
+- Tema Dark / Light
+- Internacionalização (Português / Inglês)
+- Integração frontend-backend via API REST
+- Persistência de dados em banco SQLite
+- Tratamento robusto de erros no frontend e backend
 
 ### 🚧 Funcionalidades Não Implementadas Nesta Entrega
-- Cadastro de novos usuários
-- Alertas automáticos de endividamento
-- Integração com bolsas de valores
-- Versão mobile da aplicação
+- Alertas automáticos de endividamento em tempo real  
+  *Motivo:* funcionalidade planejada para versões futuras, exigiria regras financeiras mais avançadas e notificações assíncronas.
+
+- Integração direta com APIs financeiras em tempo real (sem fallback)  
+  *Motivo:* limitações de estabilidade e rate limit das APIs gratuitas.
+
+- Aplicação mobile nativa  
+  *Motivo:* escopo da disciplina priorizou aplicação web responsiva.
 
 ---
 
 ## 🛠 Tecnologias Utilizadas
 
 ### Frontend
-- HTML5 semântico  
-- CSS3  
-- Tailwind CSS  
-- JavaScript (ES6)  
-- Chart.js  
+- HTML5
+- CSS3
+- Tailwind CSS
+- JavaScript ES6
+- Chart.js
 
 ### Backend
-- Node.js  
-- Express.js  
-
+- Node.js
+- Express.js
+- JWT (jsonwebtoken)
+- bcrypt
+- Nodemailer
 ---
 
 ## 💾 Banco de Dados
@@ -128,53 +145,21 @@ O arquivo físico do banco de dados (`.db`) é criado automaticamente durante a 
 
 ---
 
-## 📂 Estrutura do Projeto
-
-```text
-ORGANI$A/
-├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── database/
-│   │   └── schema.sql
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── scripts/
-│   ├── package.json
-│   └── server.js
-│
-├── frontend/
-│   ├── assets/
-│   ├── css/
-│   ├── js/
-│   ├── index.html
-│   ├── login.html
-│   └── prints/
-│
-├── dev-tests/
-├── .gitignore
-└── README.md
-
-````
-
----
-
 ## ⚙️ Pré-requisitos
 
-* Node.js (versão 18 ou superior)
-* npm
-* Navegador web moderno
+- Node.js (versão 18 ou superior)
+- npm
+- Navegador web moderno
+- Git
 
 ---
 
 ## 🔧 Instalação
 
 1. Clone o repositório:
-
 ```bash
 git clone https://github.com/ahcorataner/organisa.git
-```
+````
 
 2. Acesse a pasta do backend:
 
@@ -190,6 +175,20 @@ npm install
 
 ---
 
+## 🔐 Configuração do Ambiente
+
+Crie um arquivo `.env` no diretório `backend/` com base no exemplo:
+
+```env
+PORT=3000
+JWT_SECRET=sua_chave_secreta
+EMAIL_USER=seu_email@gmail.com
+EMAIL_PASS=senha_de_app_do_gmail
+ALPHA_VANTAGE_KEY=sua_api_key
+```
+
+---
+
 ## ▶️ Execução
 
 ```bash
@@ -198,6 +197,106 @@ npm start
 
 * **Backend:** [http://localhost:3000](http://localhost:3000)
 * **Frontend:** abrir `frontend/index.html` no navegador
+
+---
+
+## 🌐 Deploy da Aplicação
+
+* **Backend (API):**
+  [https://organiza-backend-ikdh.onrender.com](https://organiza-backend-ikdh.onrender.com)
+
+* **Frontend:**
+  [https://organisa-frontend.onrender.com](https://organisa-frontend.onrender.com)
+
+---
+
+## 📂 Estrutura do Projeto
+
+```text
+ORGANI$A/
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── database/
+│   │   └── schema.sql
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── package.json
+│   └── server.js
+│
+├── frontend/
+│   ├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── index.html
+│   ├── login.html
+│   └── prints/
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🧩 Modelo de Dados (Descrição Textual)
+
+O banco de dados é composto pelas seguintes entidades principais:
+
+* **usuarios**
+
+  * id, nome, email, senha, idioma, tema, reset_token, reset_expires
+* **receitas**
+
+  * id, usuario_id, valor, data, categoria, descrição
+* **despesas**
+
+  * id, usuario_id, valor, data, categoria, descrição
+* **contas**
+
+  * id, usuario_id, nome, saldo
+
+O script completo encontra-se em:
+
+```
+backend/database/schema.sql
+```
+
+---
+
+## 🔗 Documentação da API
+
+### 🔐 Autenticação
+
+* POST `/api/auth/register`
+* POST `/api/auth/login`
+* POST `/api/auth/forgot-password`
+* POST `/api/auth/reset-password`
+
+### 💰 Receitas
+
+* GET `/api/receitas`
+* POST `/api/receitas`
+* PUT `/api/receitas/:id`
+* DELETE `/api/receitas/:id`
+
+### 💸 Despesas
+
+* GET `/api/despesas`
+* POST `/api/despesas`
+* PUT `/api/despesas/:id`
+* DELETE `/api/despesas/:id`
+
+### 📈 Mercado
+
+* GET `/api/market/exchange`
+* GET `/api/market/stocks`
+
+**Métodos HTTP:** GET, POST, PUT, DELETE
+**Formato:** JSON
+**Códigos:** 200, 201, 400, 401, 404, 500
+
+---
 
 ---
 
@@ -250,7 +349,6 @@ npm start
 
 ---
 
-## 🖼 Capturas de Tela
 ## 🖼 Capturas de Tela do Sistema
 
 As imagens a seguir apresentam as principais telas do sistema **ORGANI$A**, evidenciando o funcionamento das funcionalidades implementadas na **Entrega 2 – Desenvolvimento Parcial**.
@@ -350,6 +448,16 @@ Outras telas do sistema que demonstram a navegação e organização da interfac
        style="border:1px solid #ddd; border-radius:8px; padding:4px;">
 </p>
 
+
+---
+
+## 🧠 Decisões Técnicas e Justificativas
+
+* **SQLite:** simplicidade e adequação ao escopo acadêmico
+* **Node.js + Express:** leveza e rapidez no desenvolvimento
+* **JWT:** controle de sessão seguro
+* **Fallback financeiro:** estabilidade frente a limites de APIs externas
+* **Arquitetura REST:** separação clara de responsabilidades
 
 ---
 
