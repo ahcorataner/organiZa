@@ -7,7 +7,7 @@
 <h3 align="center">Sistema Web de Controle Financeiro Pessoal</h3>
 
 <p align="center">
-  🏛️ UFMA | 💻 Desenvolvimento de Sistemas Web (DSW) | 🧩 Entrega 2 – Desenvolvimento Parcial
+  🏛️ UFMA | 💻 Desenvolvimento de Sistemas Web (DSW) | 🧩  Entrega 3 – Aplicação Web Completa
 </p>
 
 ---
